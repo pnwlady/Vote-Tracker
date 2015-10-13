@@ -1,3 +1,3 @@
-Cute Rabbit Vote Tracker
+# Cute Rabbit Vote Tracker
 
-Monday, Oct 12, 2015
+This application tracks which rabbit is the cutest.
