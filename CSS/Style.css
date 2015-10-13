@@ -1,0 +1,22 @@
+body {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  border: 2px solid red;
+}
+
+.container {
+  border: 2px solid blue;
+  display: flex;
+}
+
+.item {
+  border: 2px solid green;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-center;
+}
