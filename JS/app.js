@@ -40,30 +40,28 @@ function compareImg() {
   randomPhoto2 = randomImg();
   if (randomPhoto1 === randomPhoto2) {
     randomPhoto1 = randomImg();
-    console.log("this is line 43");
   //src is a property of boxLeft DOM element, creating src/source attribute in html
   }
   img1.src = rabbits[randomPhoto1].photo;
   img2.src = rabbits[randomPhoto2].photo;
-  console.log("this is line 47");
 };
 compareImg();
 
 img1.addEventListener('click', function() {
+  console.log(rabbits[randomPhoto1].photo);
   rabbits[randomPhoto1].votes += 1;
   console.log(rabbits[randomPhoto1].votes);
   voteFor(img1.src);
-  console.log('img1');
   compareImg();
   makeChart();
 });
 
 img2.addEventListener('click', function() {
+  console.log(rabbits[randomPhoto2].photo);
   //this represents the obj.votes
   rabbits[randomPhoto2].votes += 1;
   console.log(rabbits[randomPhoto2].votes);
   voteFor(img2.src);
-  console.log('img2')
   compareImg();
   makeChart();
 });
