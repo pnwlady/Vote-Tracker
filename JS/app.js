@@ -33,92 +33,79 @@ function randomImg() {
 var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
 
-var random1, random2;
+var randomPhoto1, randomPhoto2;
 
 function compareImg() {
+  randomPhoto1 = randomImg();
+  randomPhoto2 = randomImg();
   if (randomPhoto1 === randomPhoto2) {
-    var randomPhoto1 = randomImg();
-    var randomPhoto2 = randomImg();
+    randomPhoto1 = randomImg();
     console.log("this is line 43");
   //src is a property of boxLeft DOM element, creating src/source attribute in html
-     img1.src = rabbits[randomPhoto1].photo;
-     img2.src = rabbits[randomPhoto2].photo;
-     console.log("this is line 47");
-    }
+  }
+  img1.src = rabbits[randomPhoto1].photo;
+  img2.src = rabbits[randomPhoto2].photo;
+  console.log("this is line 47");
 };
 compareImg();
-  // var random1 = randomImg();
-  // var random2 = randomImg();
-  // console.log("this is line 41");
-  // img1.src = rabbits[random1].photo;
-  // img2.src = rabbits[random2].photo;
-  // console.log("this is line 44");
-
-
 
 img1.addEventListener('click', function() {
+  rabbits[randomPhoto1].votes += 1;
+  console.log(rabbits[randomPhoto1].votes);
   voteFor(img1.src);
-  console.log('success');
-
+  console.log('img1');
+  compareImg();
+  makeChart();
 });
 
 img2.addEventListener('click', function() {
+  //this represents the obj.votes
+  rabbits[randomPhoto2].votes += 1;
+  console.log(rabbits[randomPhoto2].votes);
   voteFor(img2.src);
-  console.log('success')
-  randomImg();
+  console.log('img2')
+  compareImg();
+  makeChart();
 });
 
-// if (randomPhoto1 === randomPhoto2) {
-//  do
-// {
-//    randomPhoto1 = randImg();
-//    randomPhoto2 = randImg();
-// //src is a property of boxLeft DOM element, creating src/source attribute in html
-//    img1.src = rabbits[randomPhoto1].photo;
-//    img2.src = rabbits[randomPhoto2].photo;
-// }
-
-// var voteFor = function(rabbit) {
-//   for (var i in rabbits) {
-//     if (rabbits[i].src === rabbit) {
-//       rabbit.votes +=1;
-//     }
-//   }
-// };
-
-
-
-var data = [
-    {
-      //each object in constructor function
-        value: 300,
-        color:"#F7464A",
-        highlight: "#FF5A5E",
-        label: "Red",
-    },
-    {
-        value: 50,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Green"
-    },
-    {
-        value: 100,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Yellow"
+var voteFor = function(rabbit) {
+  for (var i in rabbits) {
+    if (rabbits[i].src === rabbit) {
+      rabbit.votes +=1;
     }
-];
+  }
+};
 
-var context = document.getElementById('myChart').getContext('2d');
-var skillsChart = new Chart(context).Doughnut(data, {
-  //number - amount of animation steps. These are found in chart.js documentation
-  animationSteps : 30,
-  //string - animation easing effect
-  animationString : "easeOutBounce",
-  //animate rotate
-  animateRotate : true,
-  //animate scale
-  animateScale : true,
-});
+function makeChart () {
+  var data = [
+      {
+        //each object in constructor function
+          value: rabbits[randomPhoto1].votes,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Red"
+      },
+
+      {
+          value: rabbits[randomPhoto2].votes,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+      }
+  ];
+
+  var context = document.getElementById('myChart').getContext('2d');
+  var skillsChart = new Chart(context).Doughnut(data, {
+    //number - amount of animation steps. These are found in chart.js documentation
+    animationSteps : 30,
+    //string - animation easing effect
+    animationString : "easeOutBounce",
+    //animate rotate
+    animateRotate : true,
+    //animate scale
+    animateScale : true,
+  });
+};
+makeChart();
+
 
