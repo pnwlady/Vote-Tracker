@@ -87,14 +87,14 @@ img2.addEventListener('click', function() {
 // };
 
 
-/*
+
 var data = [
     {
       //each object in constructor function
         value: 300,
         color:"#F7464A",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Red",
     },
     {
         value: 50,
@@ -108,10 +108,10 @@ var data = [
         highlight: "#FFC870",
         label: "Yellow"
     }
-]
+];
 
-var context = document.getElementById('skills.').getContext('2d');
-var skillsChart - new Chart(context.Doughnut(data, {
+var context = document.getElementById('myChart').getContext('2d');
+var skillsChart = new Chart(context).Doughnut(data, {
   //number - amount of animation steps. These are found in chart.js documentation
   animationSteps : 30,
   //string - animation easing effect
@@ -120,5 +120,5 @@ var skillsChart - new Chart(context.Doughnut(data, {
   animateRotate : true,
   //animate scale
   animateScale : true,
-}))
-*/
+});
+
