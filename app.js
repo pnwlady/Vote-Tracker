@@ -1,6 +1,7 @@
 var CuteRabbits = function(name, photo) {
   this.name = name;
   this.photo = photo;
+  //votes has to happen before the push or the push won't include votes
   this.votes = 0;
   rabbits.push(this);
 }
@@ -23,35 +24,71 @@ var rab13 = new CuteRabbits('rab13', "img/rab13.jpeg");
 var rab14 = new CuteRabbits('rab14', "img/rab14.jpeg");
 var rab15 = new CuteRabbits('rab15', "img/rab15.jpeg");
 
+//creates random image
 function randomImg() {
-  var random = Math.floor(Math.random () * rabbits.length);
-  return rabbits[random];
+  var random1 = Math.floor(Math.random() * rabbits.length);
+  var random2 = Math.floor(Math.random() * rabbits.length);
+  img1.setAttribute('src', rabbits[random1].photo);
+  img2.setAttribute('src', rabbits[random2].photo);
 };
 
+//dom set up
 var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
 
-var pic1 = document.createElement('img');
-var pic2 = document.createElement('img');
-
-pic1.setAttribute('src', randomImg().photo);
-pic2.setAttribute('src', randomImg().photo);
-
-img1.appendChild(pic1);
-img2.appendChild(pic2);
-
-var picButton1 = document.getElementById('pic1');
-picButton.addEventListener('click', function() {
+img1.addEventListener('click', function() {
+  voteFor(img1.src);
+  console.log('success');
   randomImg();
-  console.log("You clicked my button");
 });
 
-var picButton2 = document.getElementById('pic2');
-picButton.addEventListener('click', function() {
+img2.addEventListener('click', function() {
+  voteFor(img2.src);
+  console.log('success')
   randomImg();
-  console.log("You clicked my button");
 });
 
+var voteFor = function(rabbit) {
+  for (var i in rabbits) {
+    if (rabbits[i].src === rabbit) {
+      rabbit.votes +=1;
+    }
+  }
+};
 
 
+/*
+var data = [
+    {
+      //each object in constructor function
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },
+    {
+        value: 50,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Green"
+    },
+    {
+        value: 100,
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Yellow"
+    }
+]
 
+var context = document.getElementById('skills.').getContext('2d');
+var skillsChart - new Chart(context.Doughnut(data, {
+  //number - amount of animation steps. These are found in chart.js documentation
+  animationSteps : 30,
+  //string - animation easing effect
+  animationString : "easeOutBounce",
+  //animate rotate
+  animateRotate : true,
+  //animate scale
+  animateScale : true,
+}))
+*/
