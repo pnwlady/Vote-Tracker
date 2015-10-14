@@ -26,20 +26,40 @@ var rab15 = new CuteRabbits('rab15', "img/rab15.jpeg");
 
 //creates random image
 function randomImg() {
-  var random1 = Math.floor(Math.random() * rabbits.length);
-  var random2 = Math.floor(Math.random() * rabbits.length);
-  img1.setAttribute('src', rabbits[random1].photo);
-  img2.setAttribute('src', rabbits[random2].photo);
+  return Math.floor(Math.random() * rabbits.length);
 };
 
 //dom set up
 var img1 = document.getElementById('img1');
 var img2 = document.getElementById('img2');
 
+var random1, random2;
+
+function compareImg() {
+  if (randomPhoto1 === randomPhoto2) {
+    var randomPhoto1 = randomImg();
+    var randomPhoto2 = randomImg();
+    console.log("this is line 43");
+  //src is a property of boxLeft DOM element, creating src/source attribute in html
+     img1.src = rabbits[randomPhoto1].photo;
+     img2.src = rabbits[randomPhoto2].photo;
+     console.log("this is line 47");
+    }
+};
+compareImg();
+  // var random1 = randomImg();
+  // var random2 = randomImg();
+  // console.log("this is line 41");
+  // img1.src = rabbits[random1].photo;
+  // img2.src = rabbits[random2].photo;
+  // console.log("this is line 44");
+
+
+
 img1.addEventListener('click', function() {
   voteFor(img1.src);
   console.log('success');
-  randomImg();
+
 });
 
 img2.addEventListener('click', function() {
@@ -48,13 +68,23 @@ img2.addEventListener('click', function() {
   randomImg();
 });
 
-var voteFor = function(rabbit) {
-  for (var i in rabbits) {
-    if (rabbits[i].src === rabbit) {
-      rabbit.votes +=1;
-    }
-  }
-};
+// if (randomPhoto1 === randomPhoto2) {
+//  do
+// {
+//    randomPhoto1 = randImg();
+//    randomPhoto2 = randImg();
+// //src is a property of boxLeft DOM element, creating src/source attribute in html
+//    img1.src = rabbits[randomPhoto1].photo;
+//    img2.src = rabbits[randomPhoto2].photo;
+// }
+
+// var voteFor = function(rabbit) {
+//   for (var i in rabbits) {
+//     if (rabbits[i].src === rabbit) {
+//       rabbit.votes +=1;
+//     }
+//   }
+// };
 
 
 /*
