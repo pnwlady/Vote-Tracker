@@ -35,11 +35,11 @@ body {
 header, footer {
   font-family: 'Bitter';
   text-align: center;
-  background-color: #DB9E36;
-  border-radius: 30px;
+  background-color: #BD4932;
+  border-radius: 10px;
 }
 h1, h3 {
-  color: #BD4932;
+  color: #FFD34E;
 }
 
 #box_one, #box_three {
