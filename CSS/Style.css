@@ -14,21 +14,29 @@ body {
   justify-content: space-around;
   justify-content: flex-center;
   background-color: #FFD34E;
+  border-radius: 10px;
+  padding-top: 10px;
 }
 
 .child {
   height: 250px;
+  width: 250px;
   justify-content: center;
   flex-flow: center;
   text-align: center;
   align-items: center;
   margin: auto;
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 header, footer {
   font-family: 'Bitter';
   text-align: center;
   background-color: #DB9E36;
+  border-radius: 30px;
 }
 h1, h3 {
   color: #BD4932;
@@ -36,16 +44,20 @@ h1, h3 {
 
 #box_one, #box_three {
 background-color: #BD4932;
+border-radius: 10px;
 }
 
 #box_two {
 background-color: #FFFAD5;
+border-radius: 10px;
 }
+
 .img {
   min-width: 80%;
   max-width: 90%;
   min-height: 90%;
   max-height: 99%;
+  border-radius: 10px;
 }
 
 main section h3 {
