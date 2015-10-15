@@ -1,3 +1,5 @@
+var rabbits = [];
+
 var CuteRabbits = function(name, photo) {
   this.name = name;
   this.photo = photo;
@@ -6,7 +8,14 @@ var CuteRabbits = function(name, photo) {
   rabbits.push(this);
 }
 
-var rabbits = [];
+// if anything exist in local storage, we want to get from local storage, and not use the empty array.
+// else we can use the generic array of objects
+if (localStorage !== null) {
+  localStorage.getItem(CuteRabbits);
+} else {
+  getStg();
+};
+console.log('this is line 18)');
 
 var rab1 = new CuteRabbits('rab1', "img/rab1.jpeg");
 var rab2 = new CuteRabbits('rab2', "img/rab2.jpeg");
@@ -48,25 +57,6 @@ function compareImg() {
 };
 compareImg();
 
-img1.addEventListener('click', function() {
-  console.log(rabbits[randomPhoto1].photo);
-  rabbits[randomPhoto1].votes += 1;
-  console.log(rabbits[randomPhoto1].votes);
-  voteFor(img1.src);
-  compareImg();
-  makeChart();
-});
-
-img2.addEventListener('click', function() {
-  console.log(rabbits[randomPhoto2].photo);
-  //this represents the obj.votes
-  rabbits[randomPhoto2].votes += 1;
-  console.log(rabbits[randomPhoto2].votes);
-  voteFor(img2.src);
-  compareImg();
-  makeChart();
-});
-
 var voteFor = function(rabbit) {
   for (var i in rabbits) {
     if (rabbits[i].src === rabbit) {
@@ -107,4 +97,35 @@ function makeChart () {
 };
 makeChart();
 
+var jsonVote1 = function() {
+  localStorage.setItem('jsonVote1', JSON.stringify(rabbits));
+};
+//bind/assign to a variable
+var getStg = function() {
+  var storedVote1 = localStorage.getItem('jsonVote1');
+  rabbits = JSON.parse(storedVote1);
+};
+
+img1.addEventListener('click', function() {
+  console.log(rabbits[randomPhoto1].photo);
+  rabbits[randomPhoto1].votes += 1;
+  console.log(rabbits[randomPhoto1].votes);
+  voteFor(img1.src);
+  compareImg();
+  makeChart();
+  jsonVote1();
+  getStg();
+});
+
+img2.addEventListener('click', function() {
+  console.log(rabbits[randomPhoto2].photo);
+  //this represents the obj.votes
+  rabbits[randomPhoto2].votes += 1;
+  console.log(rabbits[randomPhoto2].votes);
+  voteFor(img2.src);
+  compareImg();
+  makeChart();
+  jsonVote1();
+  getStg();
+});
 
