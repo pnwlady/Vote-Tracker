@@ -23,6 +23,7 @@ var rab12 = new CuteRabbits('rab12', "img/rab12.jpeg");
 var rab13 = new CuteRabbits('rab13', "img/rab13.jpeg");
 var rab14 = new CuteRabbits('rab14', "img/rab14.jpeg");
 var rab15 = new CuteRabbits('rab15', "img/rab15.jpeg");
+var rab16 = new CuteRabbits('rab16', "img/rab16.jpeg");
 
 //creates random image
 function randomImg() {
@@ -101,7 +102,7 @@ function makeChart () {
     //animate rotate
     animateRotate : true,
     //animate scale
-    animateScale : true,
+    animateScale : false,
   });
 };
 makeChart();
